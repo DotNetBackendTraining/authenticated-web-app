@@ -1,0 +1,11 @@
+﻿services:
+  utechleague24.backend.api:
+    image: utechleague24.backend.api
+    build:
+      context: .
+      dockerfile: UTechLeague24.Backend.Api/Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
