@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTechLeague24.Backend.Api", "UTechLeague24.Backend.Api\UTechLeague24.Backend.Api.csproj", "{A43DDDF3-6E4C-412A-B4F8-0CF4CB5D31EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A43DDDF3-6E4C-412A-B4F8-0CF4CB5D31EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A43DDDF3-6E4C-412A-B4F8-0CF4CB5D31EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A43DDDF3-6E4C-412A-B4F8-0CF4CB5D31EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A43DDDF3-6E4C-412A-B4F8-0CF4CB5D31EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
