@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using UTechLeague24.Backend.Api.Settings;
 using UTechLeague24.Backend.Auth.Interfaces;
 using UTechLeague24.Backend.Auth.Profiles;
 using UTechLeague24.Backend.Auth.Services;
@@ -98,5 +99,26 @@ public static class ServiceCollectionExtension
         services.Configure<IpRateLimitOptions>(configuration.GetSection("IpRateLimiting"));
         services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
         services.AddInMemoryRateLimiting();
+    }
+
+    public static void AddCorsServices(this IServiceCollection services, IConfiguration configuration)
+    {
+        var corsSettings = configuration.GetSection("CorsSettings").Get<CorsSettings>() ??
+                           throw new ArgumentException("CorsSettings");
+
+        services.AddCors(options =>
+        {
+            options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.WithOrigins(corsSettings.AllowedOrigins.ToArray())
+                    .WithMethods(corsSettings.AllowedMethods.ToArray())
+                    .WithHeaders(corsSettings.AllowedHeaders.ToArray());
+
+                if (corsSettings.AllowCredentials)
+                {
+                    builder.AllowCredentials();
+                }
+            });
+        });
     }
 }
