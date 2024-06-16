@@ -12,11 +12,6 @@
         condition: service_healthy
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:8081;http://+:8080
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=${Local__Certificates__Password}
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
-    volumes:
-      - ~/.aspnet/https:/https:ro
     env_file:
       - .env
 
