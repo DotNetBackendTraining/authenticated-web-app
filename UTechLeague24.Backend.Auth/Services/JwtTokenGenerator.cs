@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using UTechLeague24.Backend.Auth.Interfaces;
-using UTechLeague24.Backend.Auth.Models;
+using UTechLeague24.Backend.Auth.Settings;
 using UTechLeague24.Backend.Domain.Models;
 
 namespace UTechLeague24.Backend.Auth.Services;

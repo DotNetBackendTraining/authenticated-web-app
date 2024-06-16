@@ -1,4 +1,4 @@
-namespace UTechLeague24.Backend.Auth.Models;
+namespace UTechLeague24.Backend.Auth.Settings;
 
 public class JwtSettings
 {
