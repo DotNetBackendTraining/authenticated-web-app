@@ -34,6 +34,8 @@ public static class ServiceCollectionExtension
 
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddScoped<IAuthenticationService, AuthenticationService>();
+        services.AddScoped<IUserSeeder, UserSeeder>();
+
         services.AddAutoMapper(Assembly.GetAssembly(typeof(AuthProfile)));
 
         var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>() ??
