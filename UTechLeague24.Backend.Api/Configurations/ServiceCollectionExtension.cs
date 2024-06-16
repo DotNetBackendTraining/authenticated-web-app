@@ -30,6 +30,8 @@ public static class ServiceCollectionExtension
     public static void AddAuthenticationServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
+        services.Configure<ClientUserSettings>(configuration.GetSection("ClientUserSettings"));
+
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddScoped<IAuthenticationService, AuthenticationService>();
         services.AddAutoMapper(Assembly.GetAssembly(typeof(AuthProfile)));
