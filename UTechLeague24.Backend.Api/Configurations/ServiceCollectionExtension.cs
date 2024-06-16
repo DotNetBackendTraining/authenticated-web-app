@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Text;
+using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -90,5 +91,12 @@ public static class ServiceCollectionExtension
                 }
             });
         });
+    }
+
+    public static void AddRateLimitingServices(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<IpRateLimitOptions>(configuration.GetSection("IpRateLimiting"));
+        services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+        services.AddInMemoryRateLimiting();
     }
 }

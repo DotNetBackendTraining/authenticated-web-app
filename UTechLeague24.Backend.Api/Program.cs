@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using UTechLeague24.Backend.Api.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDomainServices(builder.Configuration);
 builder.Services.AddAuthenticationServices(builder.Configuration);
 builder.Services.AddControllers();
+builder.Services.AddRateLimitingServices(builder.Configuration);
 
 // Other services and configurations.
 builder.Services.AddOptions();
@@ -41,6 +43,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseIpRateLimiting();
 
 app.MapControllers();
 
