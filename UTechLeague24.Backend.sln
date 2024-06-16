@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTechLeague24.Backend.Auth", "UTechLeague24.Backend.Auth\UTechLeague24.Backend.Auth.csproj", "{8EAEE59B-EDB5-41AE-B50D-80C3AA12EA4B}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTechLeague24.Backend.Domain", "UTechLeague24.Backend.Domain\UTechLeague24.Backend.Domain.csproj", "{26E63B53-B9D0-474C-940B-79BBD30F1832}"
 EndProject
 Global
@@ -19,6 +21,10 @@ Global
 		{A43DDDF3-6E4C-412A-B4F8-0CF4CB5D31EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A43DDDF3-6E4C-412A-B4F8-0CF4CB5D31EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A43DDDF3-6E4C-412A-B4F8-0CF4CB5D31EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EAEE59B-EDB5-41AE-B50D-80C3AA12EA4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EAEE59B-EDB5-41AE-B50D-80C3AA12EA4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EAEE59B-EDB5-41AE-B50D-80C3AA12EA4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EAEE59B-EDB5-41AE-B50D-80C3AA12EA4B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{26E63B53-B9D0-474C-940B-79BBD30F1832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{26E63B53-B9D0-474C-940B-79BBD30F1832}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26E63B53-B9D0-474C-940B-79BBD30F1832}.Release|Any CPU.ActiveCfg = Release|Any CPU
