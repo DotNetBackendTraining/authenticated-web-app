@@ -14,6 +14,12 @@ builder.Services.AddSwaggerGenWithAuthentication();
 
 var app = builder.Build();
 
+// Startup tasks.
+using (var scope = app.Services.CreateScope())
+{
+    await scope.SeedClientUsersAsync();
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
