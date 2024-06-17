@@ -9,6 +9,7 @@ builder.Services.AddAuthenticationServices(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddRateLimitingServices(builder.Configuration);
 builder.Services.AddCorsServices(builder.Configuration);
+builder.Services.AddFluentValidationServices();
 
 // Other services and configurations.
 builder.Services.AddOptions();

@@ -1,6 +1,8 @@
 using System.Reflection;
 using System.Text;
 using AspNetCoreRateLimit;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -10,6 +12,7 @@ using UTechLeague24.Backend.Auth.Interfaces;
 using UTechLeague24.Backend.Auth.Profiles;
 using UTechLeague24.Backend.Auth.Services;
 using UTechLeague24.Backend.Auth.Settings;
+using UTechLeague24.Backend.Auth.Validators;
 using UTechLeague24.Backend.Domain.Db;
 using UTechLeague24.Backend.Domain.Interfaces;
 using UTechLeague24.Backend.Domain.Repositories;
@@ -120,5 +123,13 @@ public static class ServiceCollectionExtension
                 }
             });
         });
+    }
+
+    public static void AddFluentValidationServices(this IServiceCollection services)
+    {
+        services
+            .AddFluentValidationAutoValidation()
+            .AddFluentValidationClientsideAdapters()
+            .AddValidatorsFromAssemblyContaining<LoginRequestValidator>();
     }
 }
