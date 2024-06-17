@@ -3,6 +3,7 @@ using System.Text;
 using AspNetCoreRateLimit;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -68,6 +69,12 @@ public static class ServiceCollectionExtension
 
     public static void AddSwaggerGenWithAuthentication(this IServiceCollection services)
     {
+        services.AddFluentValidationRulesToSwagger(options =>
+        {
+            options.SetNotNullableIfMinLengthGreaterThenZero = true;
+            options.UseAllOfForMultipleRules = true;
+        });
+
         services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo { Title = "UTechLeague24 API", Version = "v1" });
