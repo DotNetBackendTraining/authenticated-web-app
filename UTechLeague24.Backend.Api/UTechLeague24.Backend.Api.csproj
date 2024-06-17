@@ -7,6 +7,12 @@
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\UTechLeague24.Backend.Api.xml</DocumentationFile>
+      <WarningLevel>4</WarningLevel>
+      <NoWarn>1701;1702;CS1591</NoWarn>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="AspNetCoreRateLimit" Version="5.0.0" />
         <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
