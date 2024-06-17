@@ -13,6 +13,13 @@
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ConnectionStrings__MongoDbConnection=mongodb://root:example@mongo:27017
+      - JWT_KEY=${JWT_KEY}
+      - JWT_ISSUER=${JWT_ISSUER}
+      - JWT_AUDIENCE=${JWT_AUDIENCE}
+      - ClientUserSettings__ClientUsers__0__Username=${CLIENT1_USERNAME}
+      - ClientUserSettings__ClientUsers__0__Password=${CLIENT1_PASSWORD}
+      - CorsSettings__AllowedOrigins=${CORS_ALLOWED_ORIGINS}
+      - CorsSettings__AllowCredentials=${CORS_ALLOW_CREDENTIALS}
 
   mongo-db:
     image: mongo:latest
