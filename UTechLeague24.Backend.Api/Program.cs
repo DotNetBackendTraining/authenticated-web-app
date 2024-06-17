@@ -43,8 +43,11 @@ else
 
 app.UseCors("CorsPolicy");
 
+app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.UseIpRateLimiting();
 
 app.MapControllers();
