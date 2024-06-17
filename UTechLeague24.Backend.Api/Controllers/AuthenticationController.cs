@@ -24,7 +24,7 @@ public class AuthenticationController : ControllerBase
             return Ok(result);
         }
 
-        return BadRequest(result);
+        return Conflict(result);
     }
 
     [HttpPost("login")]
