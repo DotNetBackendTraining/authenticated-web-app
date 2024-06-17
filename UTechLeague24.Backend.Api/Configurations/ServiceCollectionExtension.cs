@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using UTechLeague24.Backend.Api.Settings;
 using UTechLeague24.Backend.Auth.Interfaces;
+using UTechLeague24.Backend.Auth.Models;
 using UTechLeague24.Backend.Auth.Profiles;
 using UTechLeague24.Backend.Auth.Services;
 using UTechLeague24.Backend.Auth.Settings;
@@ -79,9 +80,19 @@ public static class ServiceCollectionExtension
         {
             options.SwaggerDoc("v1", new OpenApiInfo { Title = "UTechLeague24 API", Version = "v1" });
 
-            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            options.IncludeXmlComments(xmlPath);
+            // Add documentation from all these assemblies
+            // Must generate xml output for each one in the list
+            foreach (var assembly in new[]
+                     {
+                         Assembly.GetExecutingAssembly(),
+                         Assembly.GetAssembly(typeof(AuthenticationResult))
+                     })
+            {
+                ArgumentNullException.ThrowIfNull(assembly);
+                var xmlFile = $"{assembly.GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
+            }
 
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {

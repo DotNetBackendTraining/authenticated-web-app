@@ -6,6 +6,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\UTechLeague24.Backend.Auth.xml</DocumentationFile>
+      <WarningsAsErrors>;NU1605;SYSLIB0011</WarningsAsErrors>
+      <NoWarn>CS1591</NoWarn>  
+    </PropertyGroup>
+
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="13.0.1" />
       <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
