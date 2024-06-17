@@ -9,7 +9,7 @@
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <DocumentationFile>bin\Debug\UTechLeague24.Backend.Api.xml</DocumentationFile>
-      <WarningLevel>4</WarningLevel>
+      <WarningLevel>8</WarningLevel>
       <NoWarn>1701;1702;CS1591</NoWarn>
     </PropertyGroup>
 
