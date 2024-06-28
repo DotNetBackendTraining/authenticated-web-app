@@ -1,9 +1,9 @@
 ﻿services:
-  utechleague24.backend.api:
-    image: utechleague24.backend.api
+  authenticatedwebapp.api:
+    image: authenticatedwebapp.api
     build:
       context: .
-      dockerfile: UTechLeague24.Backend.Api/Dockerfile
+      dockerfile: AuthenticatedWebApp.Api/Dockerfile
     ports:
       - "8080:8080"
       - "8081:8081"

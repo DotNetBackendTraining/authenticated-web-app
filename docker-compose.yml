@@ -1,9 +1,9 @@
 ﻿services:
-  utechleague24.backend.api:
-    image: utechleague24.backend.api
+  authenticatedwebapp.api:
+    image: authenticatedwebapp.api
     build:
       context: .
-      dockerfile: UTechLeague24.Backend.Api/Dockerfile
+      dockerfile: AuthenticatedWebApp.Api/Dockerfile
     depends_on:
       mongo-db:
         condition: service_healthy

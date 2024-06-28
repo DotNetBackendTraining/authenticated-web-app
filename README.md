@@ -1,4 +1,4 @@
-# UTechLeague 2024 - Backend Project
+# Authenticated Web App
 
 ## Development
 
