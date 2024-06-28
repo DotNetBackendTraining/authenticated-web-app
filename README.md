@@ -7,3 +7,4 @@
    ```shell
    docker-compose -f "docker-compose.development.yml" up -d
    ```
+3. Import `Development.postman_collection.json` to postman for testing.
