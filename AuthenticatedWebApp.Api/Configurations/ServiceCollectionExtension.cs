@@ -29,7 +29,7 @@ public static class ServiceCollectionExtension
                            throw new ArgumentException("MongoDbConnection not found");
 
         services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseMongoDB(dbConnection, "utechleague24"));
+            options.UseMongoDB(dbConnection, "app-database"));
 
         services.AddScoped<IUserRepository, UserRepository>();
     }
@@ -78,7 +78,7 @@ public static class ServiceCollectionExtension
 
         services.AddSwaggerGen(options =>
         {
-            options.SwaggerDoc("v1", new OpenApiInfo { Title = "UTechLeague24 API", Version = "v1" });
+            options.SwaggerDoc("v1", new OpenApiInfo { Title = "Authenticated Web App API", Version = "v1" });
 
             // Add documentation from all these assemblies
             // Must generate xml output for each one in the list

@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["AuthenticatedWebApp.Api/AuthenticatedWebApp.Api.csproj", "AuthenticatedWebApp.Api/"]
 RUN dotnet restore "AuthenticatedWebApp.Api/AuthenticatedWebApp.Api.csproj"
 COPY . .
-WORKDIR "/src/UTechLeague24.Backend.Api"
+WORKDIR "/src/AuthenticatedWebApp.Api"
 RUN dotnet build "AuthenticatedWebApp.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
