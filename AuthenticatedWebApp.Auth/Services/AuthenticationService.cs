@@ -22,7 +22,7 @@ public class AuthenticationService : IAuthenticationService
         _jwtTokenGenerator = jwtTokenGenerator;
     }
 
-    public async Task<AuthenticationResult> CreateUserAsync(RegisterRequest registerRequest)
+    public async Task<AuthenticationResult> CreateUserAsync(RegisterRequest registerRequest, UserRole role)
     {
         if (await _userRepository.UserExistsAsync(registerRequest.Username))
         {
@@ -35,31 +35,8 @@ public class AuthenticationService : IAuthenticationService
 
         var user = _mapper.Map<User>(registerRequest);
         user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerRequest.Password);
-        user.UserRole = UserRole.User;
+        user.UserRole = role;
 
-        return await AddUserAsync(user);
-    }
-
-    public async Task<AuthenticationResult> CreateClientAsync(RegisterRequest registerRequest)
-    {
-        if (await _userRepository.UserExistsAsync(registerRequest.Username))
-        {
-            return new AuthenticationResult
-            {
-                Succeeded = false,
-                Errors = new List<string> { "Username already exists." }
-            };
-        }
-
-        var user = _mapper.Map<User>(registerRequest);
-        user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerRequest.Password);
-        user.UserRole = UserRole.Client;
-
-        return await AddUserAsync(user);
-    }
-
-    private async Task<AuthenticationResult> AddUserAsync(User user)
-    {
         await _userRepository.AddUserAsync(user);
         return new AuthenticationResult
         {
@@ -71,7 +48,9 @@ public class AuthenticationService : IAuthenticationService
     public async Task<AuthenticationResult> SignInAsync(LoginRequest loginRequest)
     {
         var user = await _userRepository.GetUserByUsernameAsync(loginRequest.Username);
-        if (user == null || !BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.PasswordHash))
+
+        var authenticatedUser = user != null && BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.PasswordHash);
+        if (!authenticatedUser)
         {
             return new AuthenticationResult
             {

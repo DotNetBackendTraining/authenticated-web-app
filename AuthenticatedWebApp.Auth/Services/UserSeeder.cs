@@ -50,7 +50,7 @@ public class UserSeeder : IUserSeeder
                 Password = clientUser.Password,
             };
 
-            var result = await _authenticationService.CreateClientAsync(registerRequest);
+            var result = await _authenticationService.CreateUserAsync(registerRequest, UserRole.Client);
             if (!result.Succeeded)
             {
                 throw new InvalidOperationException($"Couldn't add client: {clientUser.Username}");

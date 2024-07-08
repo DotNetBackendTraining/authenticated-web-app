@@ -1,5 +1,6 @@
 using AuthenticatedWebApp.Auth.Interfaces;
 using AuthenticatedWebApp.Auth.Models;
+using AuthenticatedWebApp.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthenticatedWebApp.Api.Controllers;
@@ -27,7 +28,7 @@ public class AuthenticationController : ControllerBase
     [ProducesResponseType(typeof(AuthenticationResult), StatusCodes.Status409Conflict)]
     public async Task<ActionResult<AuthenticationResult>> Register([FromBody] RegisterRequest registerRequest)
     {
-        var result = await _authenticationService.CreateUserAsync(registerRequest);
+        var result = await _authenticationService.CreateUserAsync(registerRequest, UserRole.User);
         if (result.Succeeded)
         {
             return Ok(result);
