@@ -40,13 +40,14 @@ public class UserSeeder : IUserSeeder
                     continue;
                 }
 
-                throw new InvalidOperationException($"{clientUser.Username} is already registered as non client");
+                throw new InvalidOperationException(
+                    $"{clientUser.Username} is already registered with a role other than {nameof(UserRole.Client)}");
             }
 
             var registerRequest = new RegisterRequest
             {
                 Username = clientUser.Username,
-                Password = clientUser.Password
+                Password = clientUser.Password,
             };
 
             var result = await _authenticationService.CreateClientAsync(registerRequest);
