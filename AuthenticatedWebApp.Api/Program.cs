@@ -1,5 +1,6 @@
 using AspNetCoreRateLimit;
 using AuthenticatedWebApp.Api.Configurations;
+using AuthenticatedWebApp.Api.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +51,7 @@ app.UseAuthorization();
 
 app.UseIpRateLimiting();
 
-app.MapControllers();
+app.MapAuthenticationEndpoints();
+app.MapWeatherForecastEndpoints();
 
 app.Run();
